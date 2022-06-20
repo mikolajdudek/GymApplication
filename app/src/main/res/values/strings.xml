@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">GymApplication</string>
+    <string name="title_activity_gym_map">GymMap</string>
+</resources>
