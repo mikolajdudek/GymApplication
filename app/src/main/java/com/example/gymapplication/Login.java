@@ -26,7 +26,7 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class Login extends AppCompatActivity implements View.OnClickListener{
-    EditText inputEmail, inputPassword;
+    EditText inputlogin, inputPassword;
     Button btnLogin;
     OkHttpClient client = new OkHttpClient();
     Gson gson = new Gson();
@@ -36,7 +36,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         URL = getString(R.string.API_URL);
-        inputEmail = (EditText) findViewById(R.id.login_log);
+        inputlogin = (EditText) findViewById(R.id.login_log);
         inputPassword = (EditText) findViewById(R.id.log_pass);
         btnLogin = (Button) findViewById(R.id.zaloguj_log);
         btnLogin.setOnClickListener(this);
@@ -47,10 +47,10 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
     public void onClick(View view) {
         System.out.println(view.getId());
         if(view.getId() == R.id.zaloguj_log){
-            inputEmail = findViewById(R.id.login_log);
+            inputlogin = findViewById(R.id.login_log);
             inputPassword = findViewById(R.id.log_pass);
 
-            LoginCredentials loginCredentials = new LoginCredentials(inputEmail.getText().toString(), inputPassword.getText().toString());
+            LoginCredentials loginCredentials = new LoginCredentials(inputlogin.getText().toString(), inputPassword.getText().toString());
             String loginJson = gson.toJson(loginCredentials);
 
             RequestBody requestBody = RequestBody.create(MediaType.parse("application/json"), loginJson);

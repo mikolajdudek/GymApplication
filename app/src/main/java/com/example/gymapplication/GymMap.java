@@ -58,7 +58,7 @@ public class GymMap extends FragmentActivity implements OnMapReadyCallback {
                 if(location != null){
                     currentLocation = location;
                     Toast.makeText(getApplicationContext(),"Lokalizacja to: "+currentLocation.getLatitude()
-                            +""+currentLocation.getLongitude(),Toast.LENGTH_SHORT).show();
+                            +" "+currentLocation.getLongitude(),Toast.LENGTH_SHORT).show();
                     SupportMapFragment supportMapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
                     assert supportMapFragment != null;
                     supportMapFragment.getMapAsync(GymMap.this);
