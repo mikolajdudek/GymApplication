@@ -1,5 +1,6 @@
 package com.example.gymapplication.dto;
 
+
 public class WardResponse {
     private String name;
     private String surname;

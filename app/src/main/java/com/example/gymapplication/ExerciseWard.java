@@ -38,7 +38,7 @@ import okio.BufferedSink;
 
 public class ExerciseWard extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
     Button saveit;
-    //EditText name, surname, personalIdNumber;
+
 
     String URL;
     OkHttpClient client = new OkHttpClient();
@@ -53,9 +53,6 @@ public class ExerciseWard extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exercise_ward);
         URL = getString(R.string.API_URL);
-        //name = findViewById(R.id.zajecia_imie);
-        //surname = findViewById(R.id.zajecia_nazwisko);
-        //personalIdNumber = findViewById(R.id.zajecia_pesel);
         saveit = findViewById(R.id.saveZajecia);
         saveit.setOnClickListener(this);
 
@@ -78,12 +75,11 @@ public class ExerciseWard extends AppCompatActivity implements View.OnClickListe
             public void onFailure(@NonNull Call call, @NonNull IOException e) {
                 System.out.println(e.getMessage());
             }
-
-            @RequiresApi(api = Build.VERSION_CODES.N)
+            @RequiresApi(api= Build.VERSION_CODES.N)
             @Override
             public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
                 TrainerResponse[] trainerArray = gson.fromJson(response.body().string(), TrainerResponse[].class);
-                for (TrainerResponse p : trainerArray) {
+                for (TrainerResponse p : trainerArray){
                     trainersResponse.add(p);
                     trainers.add(p.getName() + " " + p.getSurname());
                 }
@@ -105,12 +101,12 @@ public class ExerciseWard extends AppCompatActivity implements View.OnClickListe
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public void onClick(View view) {
-        if (view.getId() == R.id.saveZajecia) {
+        if(view.getId() == R.id.saveZajecia){
             System.out.println(trainer);
             List<TrainerResponse> trainerCode = trainersResponse.stream().filter(item -> Objects.equals(item.getName() + " " + item.getSurname(), trainer)).collect(Collectors.toList());
 
             Request request = new Request.Builder()
-                    .url(URL + "/api/trainers/" + trainerCode.get(0).getCode() + "/addWard")
+                    .url(URL + "/api/trainers/" + trainerCode.get(0).getCode()+"/addWard")
                     .addHeader("Authorization", token)
                     .post(new RequestBody() {
                         @Nullable
@@ -142,7 +138,7 @@ public class ExerciseWard extends AppCompatActivity implements View.OnClickListe
 
     }
 
-    public void add(Request request) {
+    public void add(Request request){
         client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(@NonNull Call call, @NonNull IOException e) {
