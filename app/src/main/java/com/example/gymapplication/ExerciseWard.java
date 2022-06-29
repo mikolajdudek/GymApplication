@@ -38,7 +38,7 @@ import okio.BufferedSink;
 
 public class ExerciseWard extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
     Button saveit;
-
+    //EditText name, surname, personalIdNumber;
 
     String URL;
     OkHttpClient client = new OkHttpClient();
@@ -53,6 +53,9 @@ public class ExerciseWard extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exercise_ward);
         URL = getString(R.string.API_URL);
+        //name = findViewById(R.id.zajecia_imie);
+        //surname = findViewById(R.id.zajecia_nazwisko);
+        //personalIdNumber = findViewById(R.id.zajecia_pesel);
         saveit = findViewById(R.id.saveZajecia);
         saveit.setOnClickListener(this);
 
